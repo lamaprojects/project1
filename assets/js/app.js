@@ -29,13 +29,20 @@ function searchMBID(mbid) {
         var citystateText = $("<p>").html((artistSetlists[i].venue.city.state) + ", " + (artistSetlists[i].venue.city.name));
         // var stateText = $("<p>").html(artistSetlists[i].venue.city.state);        
         var button = $(
-            `<button data-url=${(artistSetlists[i].url)}>View</button>`
+            `<button id="view-button" data-url=${(artistSetlists[i].url)}>View</button>`
         );
         $("#setlist-results").append(dateText, citystateText, button)
- 
+       
         // $("#setlist-results").append(button)
 
         }
+        $(document).on("click", "#view-button", function(event) {
+            event.preventDefault();
+            var link = $(this).attr("data-url");
+            console.log(this);
+            console.log("view button was clicked");
+            window.open(link, "_blank")
+        });
 
     });
   
