@@ -1,4 +1,4 @@
-
+/* 
 .sidenav {
     height: 100%;
     width: auto;
@@ -21,7 +21,7 @@
   
   .sidenav a:hover {
     color: white;
-  }
+  } */
 
 body {
     background-color: black;
@@ -84,4 +84,8 @@ font-size: 35px;
 
   #start:hover {
       color: red;
+  }
+
+  #setlist-results {
+    text-align: center;
   }
