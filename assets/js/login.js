@@ -20,7 +20,7 @@ const authEndpoint = 'https://accounts.spotify.com/authorize';
 
 // Replace with your app's client ID, redirect URI and desired scopes
 const clientId = 'abf37ff11aff48afb9ba75f4debfc293';
-const redirectUri = 'https://reliveapp.github.io/project1/';
+const redirectUri = 'https://reliveapp.github.io/project1/search.html';
 const scopes = [
   'user-top-read'
 ];
