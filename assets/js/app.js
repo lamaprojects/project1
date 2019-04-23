@@ -119,4 +119,3 @@ function searchSetlistFM(artistName) {
 //      });
 //    }
 // });
-}
