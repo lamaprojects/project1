@@ -13,7 +13,7 @@ $(document).ready(function() {
   localStorage.setItem("access_token", access_token);
   //Setting the access token to setup spotifyAPI to extend usage
   var spotifyApi = new SpotifyWebApi();
-  console.log("spotify instance is created")
+  console.log("spotify instance is created");
   spotifyApi.setAccessToken(access_token);
 
   function getUsername(callback) {
@@ -38,6 +38,27 @@ $(document).ready(function() {
   getUsername();
   //DIscover more queries here: https://github.com/jmperez/spotify-web-api-js
   // SETLISTFM API - SEARCH ARTIST AND GET SETLIST DATE/LOCATION/AND VIEW
+
+  function retrieveElvisAlbum() {
+    var spotifyApi = new SpotifyWebApi();
+    //get Elvis' albums, passing a callback. When a callback is passed, no Promise is returned
+    spotifyApi.setAccessToken(access_token);
+    //create a playlist
+    api.createPlaylist(
+      "a_user",
+      { name: "Winter is coming...with Elvis" },
+      function() {
+        console.log("Setup the new playlist");
+      }
+    );
+    //retrieve album data
+    spotifyApi.getArtistAlbums("43ZHCT0cAZBISjO8DG9PnE", function(err, data) {
+      if (err) console.error(err);
+      else console.log("Artist albums", data);
+    });
+  }
+
+  retrieveElvisAlbum()
 
   $("#submitPress").on("click", function(event) {
     event.preventDefault();
