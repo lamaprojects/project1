@@ -48,7 +48,7 @@ $(document).ready(function() {
     spotifyApi.setAccessToken(access_token);
     //create a playlist
     spotifyApi.createPlaylist(
-      userName,
+      userName.display_name,
       { name: "Winter is coming...with Elvis" },
       function() {
         console.log("Setup the new playlist");
