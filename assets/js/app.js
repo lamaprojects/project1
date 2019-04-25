@@ -35,6 +35,23 @@ $(document).ready(function() {
     });
   }
 
+  function createPlaylist(callback) {
+    //THIS IS AN IIFE (YOU TO FILL THIS IN)
+    $.ajax({
+        type: 'POST',
+        // make sure you respect the same origin policy with this url:
+        // http://en.wikipedia.org/wiki/Same_origin_policy
+        url: `https://api.spotify.com/v1/users/laylajoo/playlists`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("access_token")
+        },
+        data: { name: "Winter is coming...with Elvis" },
+        success: function(msg){
+            console.log("Successfully saved a badass playlist about retrieving data", msg)
+        }
+    });
+  }
+  createPlaylist()
   
   getUsername();
   //DIscover more queries here: https://github.com/jmperez/spotify-web-api-js
@@ -45,7 +62,7 @@ $(document).ready(function() {
     spotifyApi.setAccessToken(access_token);
     //create a playlist
     // spotifyApi.createPlaylist(
-    //   user.display_name,
+    //   "khcwm6y9aa6h5btm51xw66m8a",
     //   { name: "Winter is coming...with Elvis" },
     //   function() {
     //     console.log("Setup the new playlist");
