@@ -28,7 +28,9 @@ body {
     font-family: 'Permanent Marker';
     color: white;
 }
-
+#live {
+  color:white;
+}
 header {
     border: 3px solid black;
     background-color:black;
