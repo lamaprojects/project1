@@ -8,6 +8,7 @@ $("#submitPress").on("click", function(event) {
 });
 
 function searchMBID(mbid) {
+// CORS-anywhere hack - we're doing this instead of creating a server
     var originalURL = "https://api.setlist.fm/rest/1.0/search/setlists?artistMbid=" + mbid.replace(/\"/g, "") + "&p=1";
     var queryURL = "https://cors-anywhere.herokuapp.com/" + originalURL
     $.ajax({
@@ -31,6 +32,8 @@ function searchMBID(mbid) {
         var button = $(
             `<button id="view-button" data-url=${(artistSetlists[i].url)}>View</button>`
         );
+        var songText = $("<p>").html(artistSetlists[i].sets.set[0].song[0].name)
+        console.log(songText);
         $("#setlist-results").append(dateText, citystateText, button)
        
         // $("#setlist-results").append(button)
