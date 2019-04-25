@@ -1,5 +1,6 @@
 $(document).ready(function() {
   console.log("ready!");
+  var user = "";
   //THESE ARE HELPER FUNCTIONS TO BREAK DOWN THE URL AND SAVE THE ACCESS TOKEN
   function getParameterByName(name) {
     var match = RegExp("[#&]" + name + "=([^&]*)").exec(window.location.hash);
@@ -12,9 +13,6 @@ $(document).ready(function() {
   console.log("Access token attempted to set:", access_token);
   localStorage.setItem("access_token", access_token);
   //Setting the access token to setup spotifyAPI to extend usage
-  var spotifyApi = new SpotifyWebApi();
-  console.log("spotify instance is created");
-  spotifyApi.setAccessToken(access_token);
 
   function getUsername(callback) {
     //THIS IS AN IIFE (YOU TO FILL THIS IN)
@@ -27,7 +25,7 @@ $(document).ready(function() {
       },
       success: function(data) {
         console.log("pulled username response", data);
-         callback(data);
+        user = data;
       },
       error: function(error) {
         console.log(error);
@@ -36,10 +34,12 @@ $(document).ready(function() {
     });
   }
 
+  
   getUsername();
+  console.log(data)
   //DIscover more queries here: https://github.com/jmperez/spotify-web-api-js
   // SETLISTFM API - SEARCH ARTIST AND GET SETLIST DATE/LOCATION/AND VIEW
-  function retrieveElvisAlbum(data) {
+  function retrieveElvisAlbum() {
     var spotifyApi = new SpotifyWebApi();
     //get Elvis' albums, passing a callback. When a callback is passed, no Promise is returned
     spotifyApi.setAccessToken(access_token);
@@ -58,7 +58,7 @@ $(document).ready(function() {
     });
   }
 
-  getUsername(retrieveElvisAlbum)
+  retrieveElvisAlbum()
 
   $("#submitPress").on("click", function(event) {
     event.preventDefault();
