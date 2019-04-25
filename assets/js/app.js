@@ -23,7 +23,7 @@ function getIdToken() {
 }
 //THIS IS AN IIFE (YOU TO FILL THIS IN)
 $(function () {
-  var access_token = getAccessToken();getParameterByName
+  var access_token = getAccessToken();
   console.log("Access token attempted to set:",access_token)
   localStorage.setItem("access_token", access_token);
   // Optional: an ID Token will be returned by Auth0
@@ -52,7 +52,7 @@ function getUsername(callback) {
 	});
 }
 
-getUsername();
+// getUsername();
 
 // SETLISTFM API - SEARCH ARTIST AND GET SETLIST DATE/LOCATION/AND VIEW
 
