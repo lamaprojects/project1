@@ -37,21 +37,23 @@ $(document).ready(function() {
 
   function createPlaylist(callback) {
     //THIS IS AN IIFE (YOU TO FILL THIS IN)
+    console.log("creating a playlist");
     $.ajax({
-        type: 'POST',
-        // make sure you respect the same origin policy with this url:
-        // http://en.wikipedia.org/wiki/Same_origin_policy
+        method: 'POST',
         url: `https://api.spotify.com/v1/users/laylajoo/playlists`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("access_token")
         },
-        data: { name: "Winter is coming...with Elvis" },
+        data: JSON.stringify({
+          'name': name,
+          'public': false
+        }),
         success: function(msg){
             console.log("Successfully saved a badass playlist about retrieving data", msg)
         }
     });
   }
-  createPlaylist()
+  // createPlaylist()
   
   getUsername();
   //DIscover more queries here: https://github.com/jmperez/spotify-web-api-js
