@@ -56,23 +56,7 @@ $(function () {
 // api.createPlaylist('laylajoo', { name: 'A name for the playlist' }, function(){
 //   console.log("do some things after the call ")
 // });
-function getUsername(callback) {
-	console.log('getUsername');
-	var url = 'https://api.spotify.com/v1/me';
-	$.ajax(url, {
-		dataType: 'json',
-		headers: {
-			'Authorization': 'Bearer ' + localStorage.getItem("access_token")
-		},
-		success: function(r) {
-			console.log('got username response', r);
-      // callback(r.id);
-		},
-		error: function(r) {
-			// callback(null);
-		}
-	});
-}
+
 
 // TEST CODE END
 // If there is no token, redirect to Spotify authorization
@@ -82,7 +66,6 @@ if (!_token) {
     window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`;
   });
   
-  getUsername()
 }
 
 
