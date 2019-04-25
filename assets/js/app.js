@@ -43,7 +43,7 @@ $(document).ready(function() {
     });
   }
 
-  // getUsername();
+  getUsername();
 
   // SETLISTFM API - SEARCH ARTIST AND GET SETLIST DATE/LOCATION/AND VIEW
 
