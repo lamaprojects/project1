@@ -1,6 +1,6 @@
 $(document).ready(function() {
   console.log("ready!");
-  let username;
+  let userName;
   //THESE ARE HELPER FUNCTIONS TO BREAK DOWN THE URL AND SAVE THE ACCESS TOKEN
   function getParameterByName(name) {
     var match = RegExp("[#&]" + name + "=([^&]*)").exec(window.location.hash);
