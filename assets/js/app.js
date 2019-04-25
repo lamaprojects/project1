@@ -14,9 +14,9 @@ $(document).ready(function() {
   localStorage.setItem("access_token", access_token);
   //Setting the access token to setup spotifyAPI to extend usage
 
-  function getUsername(callback) {
-    //THIS IS AN IIFE (YOU TO FILL THIS IN)
-    console.log("getUsername");
+  // function getUsername(callback) {
+  //   //THIS IS AN IIFE (YOU TO FILL THIS IN)
+  //   console.log("getUsername");
     var url = "https://api.spotify.com/v1/me/";
     $.ajax(url, {
       dataType: "json",
@@ -26,14 +26,13 @@ $(document).ready(function() {
       success: function(data) {
         console.log("pulled username response", data);
         user = data;
-        return data
       },
       error: function(error) {
         console.log(error);
         return error;
       }
     });
-  }
+  
 
   // function createPlaylist(callback) {
   //   //THIS IS AN IIFE (YOU TO FILL THIS IN)
@@ -55,7 +54,6 @@ $(document).ready(function() {
   // }
   // createPlaylist()
   
-  getUsername();
   //DIscover more queries here: https://github.com/jmperez/spotify-web-api-js
   // SETLISTFM API - SEARCH ARTIST AND GET SETLIST DATE/LOCATION/AND VIEW
   function retrieveElvisAlbum() {
@@ -78,6 +76,12 @@ $(document).ready(function() {
   }
 
   retrieveElvisAlbum()
+
+  $("#playlist").on('click', function(){
+    retrieveElvisAlbum(access_token, user);
+  });
+
+  
 
   $("#submitPress").on("click", function(event) {
     event.preventDefault();
