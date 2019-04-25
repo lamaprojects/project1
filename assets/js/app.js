@@ -1,18 +1,6 @@
 $(document).ready(function() {
   console.log("ready!");
 
-  const hash = window.location.hash
-    .substring(1)
-    .split("&")
-    .reduce(function(initial, item) {
-      if (item) {
-        var parts = item.split("=");
-        initial[parts[0]] = decodeURIComponent(parts[1]);
-      }
-      return initial;
-    }, {});
-  window.location.hash = "";
-
   //THESE ARE HELPER FUNCTIONS TO BREAK DOWN THE URL AND SAVE THE ACCESS TOKEN
   function getParameterByName(name) {
     var match = RegExp("[#&]" + name + "=([^&]*)").exec(window.location.hash);
