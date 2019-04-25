@@ -25,11 +25,11 @@ $(document).ready(function() {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("access_token")
       },
-      success: function(r) {
-        console.log("pulled username response", r);
-        // callback(r.id);
+      success: function(data) {
+        console.log("pulled username response", data);
+        return data
       },
-      error: function(r) {
+      error: function(error) {
         // callback(null);
       }
     });
@@ -45,7 +45,7 @@ $(document).ready(function() {
     spotifyApi.setAccessToken(access_token);
     //create a playlist
     spotifyApi.createPlaylist(
-      "a_user",
+      getUsername().display_name,
       { name: "Winter is coming...with Elvis" },
       function() {
         console.log("Setup the new playlist");
