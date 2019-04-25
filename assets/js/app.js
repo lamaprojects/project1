@@ -1,6 +1,7 @@
 $(document).ready(function() {
   console.log("ready!");
   var user = "";
+  var songs = "";
   //THESE ARE HELPER FUNCTIONS TO BREAK DOWN THE URL AND SAVE THE ACCESS TOKEN
   function getParameterByName(name) {
     var match = RegExp("[#&]" + name + "=([^&]*)").exec(window.location.hash);
@@ -17,22 +18,21 @@ $(document).ready(function() {
   // function getUsername(callback) {
   //   //THIS IS AN IIFE (YOU TO FILL THIS IN)
   //   console.log("getUsername");
-    var url = "https://api.spotify.com/v1/me/";
-    $.ajax(url, {
-      dataType: "json",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("access_token")
-      },
-      success: function(data) {
-        console.log("pulled username response", data);
-        user = data;
-      },
-      error: function(error) {
-        console.log(error);
-        return error;
-      }
-    });
-  
+  var url = "https://api.spotify.com/v1/me/";
+  $.ajax(url, {
+    dataType: "json",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("access_token")
+    },
+    success: function(data) {
+      console.log("pulled username response", data);
+      user = data;
+    },
+    error: function(error) {
+      console.log(error);
+      return error;
+    }
+  });
 
   // function createPlaylist(callback) {
   //   //THIS IS AN IIFE (YOU TO FILL THIS IN)
@@ -53,45 +53,44 @@ $(document).ready(function() {
   //   });
   // }
   // createPlaylist()
-  
+
   //DIscover more queries here: https://github.com/jmperez/spotify-web-api-js
   // SETLISTFM API - SEARCH ARTIST AND GET SETLIST DATE/LOCATION/AND VIEW
   function retrieveElvisAlbum(access_token, user) {
     console.log(user);
     console.log(access_token);
-    
-    var urlString = 'https://api.spotify.com/v1/users/' + user.id + '/playlists';
+
+    var urlString =
+      "https://api.spotify.com/v1/users/" + user.id + "/playlists";
 
     var jsonData = {
-      "name": "My Fucking Playlist",
-      "public": false
+      name: "My Fucking Playlist",
+      public: false
     };
 
     $.ajax({
-      type: 'POST',
+      type: "POST",
       url: urlString,
       data: JSON.stringify(jsonData),
-      dataType: 'json',
+      dataType: "json",
       headers: {
-        'Authorization': 'Bearer ' + access_token
+        Authorization: "Bearer " + access_token
       },
-      contentType: 'application/json',
+      contentType: "application/json",
       success: function(result) {
         console.log(result);
-        console.log('Woo');
+        console.log("Woo");
       },
       error: function(error) {
         console.log(error);
-        console.log('Error');
+        console.log("Error");
       }
-    })
+    });
   }
 
-
-  $("#playlist").on('click', function(){
+  $("#playlist").on("click", function() {
     retrieveElvisAlbum(access_token, user);
   });
-
 
   $("#submitPress").on("click", function(event) {
     event.preventDefault();
@@ -118,6 +117,15 @@ $(document).ready(function() {
     }).done(function(response) {
       artistSetlists = response.setlist;
       console.log(artistSetlists);
+  
+      artistSetlists.map(function(val) {
+        var result = val.sets.set.map(function(i) {
+          i.song[0].name;
+        });
+        return result.map(function(song) {
+          $('#song-list').html(`<p>${song}</p>`);
+        });
+      });
 
       for (var i = 0; i < artistSetlists.length; i++) {
         console.log(artistSetlists[i]);
@@ -133,10 +141,7 @@ $(document).ready(function() {
             artistSetlists[i].url
           }>View</button>`
         );
-        var songText = $("<p>").html(
-          artistSetlists[i].sets.set[0].song[0].name
-        );
-        console.log(songText);
+
         $("#setlist-results").append(dateText, citystateText, button);
 
         // $("#setlist-results").append(button)
