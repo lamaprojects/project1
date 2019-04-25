@@ -1,3 +1,39 @@
+const hash = window.location.hash
+  .substring(1)
+  .split("&")
+  .reduce(function(initial, item) {
+    if (item) {
+      var parts = item.split("=");
+      initial[parts[0]] = decodeURIComponent(parts[1]);
+    }
+    return initial;
+  }, {});
+window.location.hash = "";
+
+//THESE ARE HELPER FUNCTIONS TO BREAK DOWN THE URL AND SAVE THE ACCESS TOKEN
+function getParameterByName(name) {
+  var match = RegExp('[#&]' + name + '=([^&]*)').exec(window.location.hash);
+  return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+function getAccessToken() {
+  return getParameterByName('access_token');
+}
+function getIdToken() {
+  return ('id_token');
+}
+//THIS IS AN IIFE (YOU TO FILL THIS IN)
+$(function () {
+  var access_token = getAccessToken();getParameterByName
+  console.log("Access token attempted to set:",access_token)
+  localStorage.setItem("access_token", access_token);
+  // Optional: an ID Token will be returned by Auth0
+  // if your response_type argument contained id_token
+  var id_token = getIdToken();
+
+  // Use the Access Token to make API calls
+  // ...
+});
+
 function getUsername(callback) {
 	console.log('getUsername');
 	var url = 'https://api.spotify.com/v1/me';
