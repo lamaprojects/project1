@@ -1,5 +1,6 @@
 $(document).ready(function() {
   console.log("ready!");
+  let username;
   //THESE ARE HELPER FUNCTIONS TO BREAK DOWN THE URL AND SAVE THE ACCESS TOKEN
   function getParameterByName(name) {
     var match = RegExp("[#&]" + name + "=([^&]*)").exec(window.location.hash);
@@ -27,10 +28,12 @@ $(document).ready(function() {
       },
       success: function(data) {
         console.log("pulled username response", data);
-        return data
+        userName = data;
+        return data;
       },
       error: function(error) {
-        // callback(null);
+        console.log(error);
+        return error;
       }
     });
   }
@@ -45,7 +48,7 @@ $(document).ready(function() {
     spotifyApi.setAccessToken(access_token);
     //create a playlist
     spotifyApi.createPlaylist(
-      getUsername().display_name,
+      userName,
       { name: "Winter is coming...with Elvis" },
       function() {
         console.log("Setup the new playlist");
