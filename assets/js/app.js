@@ -44,7 +44,7 @@ $(document).ready(function() {
     //get Elvis' albums, passing a callback. When a callback is passed, no Promise is returned
     spotifyApi.setAccessToken(access_token);
     //create a playlist
-    api.createPlaylist(
+    spotifyApi.createPlaylist(
       "a_user",
       { name: "Winter is coming...with Elvis" },
       function() {
