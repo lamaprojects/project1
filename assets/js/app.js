@@ -1,7 +1,7 @@
 $(document).ready(function() {
   console.log("ready!");
   var user = "";
-  var songs = "";
+  var songs = [];
   //THESE ARE HELPER FUNCTIONS TO BREAK DOWN THE URL AND SAVE THE ACCESS TOKEN
   function getParameterByName(name) {
     var match = RegExp("[#&]" + name + "=([^&]*)").exec(window.location.hash);
@@ -56,7 +56,7 @@ $(document).ready(function() {
 
   //DIscover more queries here: https://github.com/jmperez/spotify-web-api-js
   // SETLISTFM API - SEARCH ARTIST AND GET SETLIST DATE/LOCATION/AND VIEW
-  function retrieveElvisAlbum(access_token, user) {
+  function makePlaylist(access_token, user, songs) {
     console.log(user);
     console.log(access_token);
 
@@ -80,6 +80,10 @@ $(document).ready(function() {
       success: function(result) {
         console.log(result);
         console.log("Woo");
+        
+        // so this is where we are going to perform the search for songs 
+        var spotifyPlaylistId = result.id 
+        var urlStringForPlaylist = 'https://api.spotify.com/v1/playlists/' + spotifyPlaylistId + '/tracks'
       },
       error: function(error) {
         console.log(error);
@@ -89,7 +93,7 @@ $(document).ready(function() {
   }
 
   $("#playlist").on("click", function() {
-    retrieveElvisAlbum(access_token, user);
+    makePlaylist(access_token, user);
   });
 
   $("#submitPress").on("click", function(event) {
@@ -117,35 +121,83 @@ $(document).ready(function() {
     }).done(function(response) {
       artistSetlists = response.setlist;
       console.log(artistSetlists);
-  
-      artistSetlists.map(function(val) {
-        var result = val.sets.set.map(function(i) {
-          i.song[0].name;
+
+      artistSetlists.map(function(val, i) {
+        // now we are in the loop, and we are accessing setlists
+
+        // we are creating an empty array per setlist in var songs 
+        // this is so we can push the songs from an individual setlist into its own array
+        songs.push([]);
+
+        var result = val.sets.set.map(function(set) {
+          // we are looping over the songs in a setlist and pushing the song name
+          // into the correct var songs array e.g. songs[i]
+          set.song.map(function(song, x){
+            songs[i].push(song.name);
+          })
         });
-        return result.map(function(song) {
+
+        console.log(songs);
+
+        // This is literally to display HTML, nothing more
+        result.map(function(song) {
           $('#song-list').html(`<p>${song}</p>`);
         });
-      });
 
-      for (var i = 0; i < artistSetlists.length; i++) {
-        console.log(artistSetlists[i]);
+        // This is displaying the set lists on the page
         var dateText = $("<p>").html(artistSetlists[i].eventDate);
         var citystateText = $("<p>").html(
           artistSetlists[i].venue.city.state +
             ", " +
             artistSetlists[i].venue.city.name
         );
-        // var stateText = $("<p>").html(artistSetlists[i].venue.city.state);
+
         var button = $(
           `<button id="view-button" data-url=${
             artistSetlists[i].url
           }>View</button>`
         );
 
-        $("#setlist-results").append(dateText, citystateText, button);
+        var spotifySongsUrls = [];
 
-        // $("#setlist-results").append(button)
-      }
+        var createPlaylistButton = $('<button/>', {
+          text: 'Create Playlist',
+          id: 'button-' + i,
+          click: function() { 
+            var b;
+            // for each song name get spotifySongUrl
+            for (b = 0; b < songs[i].length; ++b) {
+              $.ajax({
+                type: "GET",
+                url: "https://api.spotify.com/v1/search?type=track&query=" + songs[i][b] + ' ' + $("#user-input").val(),
+                dataType: "json",
+                headers: {
+                  Authorization: "Bearer " + access_token
+                },
+                contentType: "application/json",
+                success: function(result) {
+                  console.log(result);
+                  // now we need to push uri into spotifySongsUrls
+                },
+                error: function(error) {
+                  console.log(error);
+                  console.log("Error");
+                }
+              });
+            }
+            // makePlaylist(access_token, user, spotifyTracksArray)
+            // console.log('these are the songs i need to search for: ' + $(this).attr('data-songs'))
+          },
+          'data-songs': songs[i]
+        });
+
+
+        $("#setlist-results").append(dateText, citystateText, button, createPlaylistButton);
+      });
+
+
+      // $("#setlist-results").append(button)
+
       $(document).on("click", "#view-button", function(event) {
         event.preventDefault();
         var link = $(this).attr("data-url");
