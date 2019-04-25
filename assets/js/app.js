@@ -1,6 +1,6 @@
 $(document).ready(function() {
   console.log("ready!");
-
+  var spotifyApi = new SpotifyWebApi();
   //THESE ARE HELPER FUNCTIONS TO BREAK DOWN THE URL AND SAVE THE ACCESS TOKEN
   function getParameterByName(name) {
     var match = RegExp("[#&]" + name + "=([^&]*)").exec(window.location.hash);
@@ -14,7 +14,6 @@ $(document).ready(function() {
     var access_token = getAccessToken();
     console.log("Access token attempted to set:", access_token);
     localStorage.setItem("access_token", access_token);
-    var spotifyApi = new SpotifyWebApi();
     //Setting the access token to setup spotifyAPI to extend usage
     spotifyApi.setAccessToken(access_token)
   });
@@ -40,6 +39,7 @@ $(document).ready(function() {
   }
 
   getUsername();
+  //DIscover more queries here: https://github.com/jmperez/spotify-web-api-js
   // SETLISTFM API - SEARCH ARTIST AND GET SETLIST DATE/LOCATION/AND VIEW
 
   $("#submitPress").on("click", function(event) {
