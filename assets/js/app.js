@@ -25,8 +25,7 @@ $(document).ready(function() {
       },
       success: function(data) {
         console.log("pulled username response", data);
-        user = data;
-        return data
+        return data;
       },
       error: function(error) {
         console.log(error);
@@ -34,33 +33,32 @@ $(document).ready(function() {
       }
     });
   }
-
-  
-  getUsername();
   //DIscover more queries here: https://github.com/jmperez/spotify-web-api-js
   // SETLISTFM API - SEARCH ARTIST AND GET SETLIST DATE/LOCATION/AND VIEW
   function retrieveElvisAlbum() {
     var spotifyApi = new SpotifyWebApi();
     //get Elvis' albums, passing a callback. When a callback is passed, no Promise is returned
     spotifyApi.setAccessToken(access_token);
-    console.log(user)
-    console.log("user inside",getUsername())
-    //create a playlist
-    spotifyApi.createPlaylist(
-      user,
-      { name: "Winter is coming...with Elvis" },
-      function() {
-        console.log("Setup the new playlist");
-      }
-    );
-    //retrieve album data
-    spotifyApi.getArtistAlbums("43ZHCT0cAZBISjO8DG9PnE", function(err, data) {
-      if (err) console.error(err);
-      else console.log("Artist albums", data);
+    // console.log("user inside",getUsername())
+    getUsername().then(user => {
+      console.log("inside promise", user)
+      //create a playlist
+      spotifyApi.createPlaylist(
+        user.display_name,
+        { name: "Winter is coming...with Elvis" },
+        function() {
+          console.log("Setup the new playlist");
+        }
+      );
+      //retrieve album data
+      spotifyApi.getArtistAlbums("43ZHCT0cAZBISjO8DG9PnE", function(err, data) {
+        if (err) console.error(err);
+        else console.log("Artist albums", data);
+      });
     });
   }
 
-  retrieveElvisAlbum()
+  retrieveElvisAlbum();
 
   $("#submitPress").on("click", function(event) {
     event.preventDefault();
