@@ -1,5 +1,4 @@
 // SPOTIFY API
-
 // Get the hash of the url
 const hash = window.location.hash
   .substring(1)
@@ -21,14 +20,15 @@ const authEndpoint = "https://accounts.spotify.com/authorize";
 // Replace with your app's client ID, redirect URI and desired scopes
 const clientId = "abf37ff11aff48afb9ba75f4debfc293";
 const redirectUri = "https://reliveapp.github.io/project1/search.html";
-const scopes = ["user-top-read"];
+const scopes = ["playlist-modify-private"];
 
 // If there is no token, redirect to Spotify authorization
 if (!_token) {
   $("#login").on("click", function(event) {
     event.preventDefault;
-    window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
-      "%20"
-    )}&response_type=token&show_dialog=true`;
+    window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`;
   });
+  
 }
+
+
