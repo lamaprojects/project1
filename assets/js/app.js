@@ -56,32 +56,42 @@ $(document).ready(function() {
   
   //DIscover more queries here: https://github.com/jmperez/spotify-web-api-js
   // SETLISTFM API - SEARCH ARTIST AND GET SETLIST DATE/LOCATION/AND VIEW
-  function retrieveElvisAlbum() {
-    var spotifyApi = new SpotifyWebApi();
-    //get Elvis' albums, passing a callback. When a callback is passed, no Promise is returned
-    spotifyApi.setAccessToken(access_token);
-    //create a playlist
-    spotifyApi.createPlaylist(
-      "laylajoo",
-      { name: "Winter is coming...with Elvis" },
-      function(callback) {
-        console.log("Setup the new playlist");
+  function retrieveElvisAlbum(access_token, user) {
+    console.log(user);
+    console.log(access_token);
+    
+    var urlString = 'https://api.spotify.com/v1/users/' + user.id + '/playlists';
+
+    var jsonData = {
+      "name": "My Fucking Playlist",
+      "public": false
+    };
+
+    $.ajax({
+      type: 'POST',
+      url: urlString,
+      data: JSON.stringify(jsonData),
+      dataType: 'json',
+      headers: {
+        'Authorization': 'Bearer ' + access_token
+      },
+      contentType: 'application/json',
+      success: function(result) {
+        console.log(result);
+        console.log('Woo');
+      },
+      error: function(error) {
+        console.log(error);
+        console.log('Error');
       }
-    );
-    //retrieve album data
-    spotifyApi.getArtistAlbums("43ZHCT0cAZBISjO8DG9PnE", function(err, data) {
-      if (err) console.error(err);
-      else console.log("Artist albums", data);
-    });
+    })
   }
 
-  retrieveElvisAlbum()
 
   $("#playlist").on('click', function(){
     retrieveElvisAlbum(access_token, user);
   });
 
-  
 
   $("#submitPress").on("click", function(event) {
     event.preventDefault();
