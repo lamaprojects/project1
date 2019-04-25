@@ -35,24 +35,24 @@ $(document).ready(function() {
     });
   }
 
-  function createPlaylist(callback) {
-    //THIS IS AN IIFE (YOU TO FILL THIS IN)
-    console.log("creating a playlist");
-    $.ajax({
-        method: 'POST',
-        url: `https://api.spotify.com/v1/users/laylajoo/playlists`,
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("access_token")
-        },
-        data: JSON.stringify({
-          'name': name,
-          'public': false
-        }),
-        success: function(msg){
-            console.log("Successfully saved a badass playlist about retrieving data", msg)
-        }
-    });
-  }
+  // function createPlaylist(callback) {
+  //   //THIS IS AN IIFE (YOU TO FILL THIS IN)
+  //   console.log("creating a playlist");
+  //   $.ajax({
+  //       method: 'POST',
+  //       url: `https://api.spotify.com/v1/users/laylajoo/playlists`,
+  //       headers: {
+  //         Authorization: "Bearer " + localStorage.getItem("access_token")
+  //       },
+  //       data: JSON.stringify({
+  //         'name': name,
+  //         'public': false
+  //       }),
+  //       success: function(msg){
+  //           console.log("Successfully saved a badass playlist about retrieving data", msg)
+  //       }
+  //   });
+  // }
   // createPlaylist()
   
   getUsername();
@@ -63,13 +63,13 @@ $(document).ready(function() {
     //get Elvis' albums, passing a callback. When a callback is passed, no Promise is returned
     spotifyApi.setAccessToken(access_token);
     //create a playlist
-    // spotifyApi.createPlaylist(
-    //   "khcwm6y9aa6h5btm51xw66m8a",
-    //   { name: "Winter is coming...with Elvis" },
-    //   function() {
-    //     console.log("Setup the new playlist");
-    //   }
-    // );
+    spotifyApi.createPlaylist(
+      "laylajoo",
+      { name: "Winter is coming...with Elvis" },
+      function(callback) {
+        console.log("Setup the new playlist");
+      }
+    );
     //retrieve album data
     spotifyApi.getArtistAlbums("43ZHCT0cAZBISjO8DG9PnE", function(err, data) {
       if (err) console.error(err);
