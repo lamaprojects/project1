@@ -24,11 +24,11 @@ const clientId = "abf37ff11aff48afb9ba75f4debfc293";
 const redirectUri = "https://reliveapp.github.io/project1/search.html";
 const scopes = ["playlist-modify-private"];
 // TEST CODE
-var api = new SpotifyWebApi({
-  clientId: clientId,
-  clientSecret: 'c3c1be8950dd4e74b747b21920b8ac20',
-  redirectUri
-});
+// var api = new SpotifyWebApi({
+//   clientId: clientId,
+//   clientSecret: 'c3c1be8950dd4e74b747b21920b8ac20',
+//   redirectUri
+// });
 //THESE ARE HELPER FUNCTIONS TO BREAK DOWN THE URL AND SAVE THE ACCESS TOKEN
 function getParameterByName(name) {
   var match = RegExp('[#&]' + name + '=([^&]*)').exec(window.location.hash);
