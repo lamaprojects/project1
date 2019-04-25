@@ -1,3 +1,22 @@
+function getUsername(callback) {
+	console.log('getUsername');
+	var url = 'https://api.spotify.com/v1/me';
+	$.ajax(url, {
+		dataType: 'json',
+		headers: {
+			'Authorization': 'Bearer ' + localStorage.getItem("access_token")
+		},
+		success: function(r) {
+			console.log('got username response', r);
+      // callback(r.id);
+		},
+		error: function(r) {
+			// callback(null);
+		}
+	});
+}
+
+getUsername();
 
 // SETLISTFM API - SEARCH ARTIST AND GET SETLIST DATE/LOCATION/AND VIEW
 
