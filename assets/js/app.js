@@ -24,20 +24,20 @@ $(document).ready(function() {
   function getIdToken() {
     return "id_token";
   }
-  //THIS IS AN IIFE (YOU TO FILL THIS IN)
-  $(function() {
-    var access_token = getAccessToken();
-    console.log("Access token attempted to set:", access_token);
-    localStorage.setItem("access_token", access_token);
-    // Optional: an ID Token will be returned by Auth0
-    // if your response_type argument contained id_token
-    var id_token = getIdToken();
-
-    // Use the Access Token to make API calls
-    // ...
-  });
 
   function getUsername(callback) {
+    //THIS IS AN IIFE (YOU TO FILL THIS IN)
+    $(function() {
+      var access_token = getAccessToken();
+      console.log("Access token attempted to set:", access_token);
+      localStorage.setItem("access_token", access_token);
+      // Optional: an ID Token will be returned by Auth0
+      // if your response_type argument contained id_token
+      var id_token = getIdToken();
+
+      // Use the Access Token to make API calls
+      // ...
+    });
     console.log("getUsername");
     var url = "https://api.spotify.com/v1/me";
     $.ajax(url, {
