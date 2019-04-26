@@ -1,6 +1,8 @@
-//html loading before js runs
+//HTML loading before JS
 $(document).ready(function() {
   console.log("ready!");
+
+  // global variables
   var user = "";
   var songs = [];
 
@@ -9,17 +11,16 @@ $(document).ready(function() {
     var match = RegExp("[#&]" + name + "=([^&]*)").exec(window.location.hash);
     return match && decodeURIComponent(match[1].replace(/\+/g, " "));
   }
+
+  //Setting the access token to setup spotifyAPI to extend usage
   function getAccessToken() {
     return getParameterByName("access_token");
   }
+  //Storing access token locally in browser
   var access_token = getAccessToken();
-  // console.log("Access token attempted to set:", access_token);
   localStorage.setItem("access_token", access_token);
-  //Setting the access token to setup spotifyAPI to extend usage
 
-  // function getUsername(callback) {
-  //   //THIS IS AN IIFE (YOU TO FILL THIS IN)
-  //   console.log("getUsername");
+  //Get Spotify username of user
   var url = "https://api.spotify.com/v1/me/";
   $.ajax(url, {
     dataType: "json",
@@ -83,9 +84,6 @@ $(document).ready(function() {
     }); // this closes first ajax call to create playlist
   }
 
-  $("#playlist").on("click", function() {
-    makePlaylist(access_token, user);
-  });
 
   $("#submitPress").on("click", function(event) {
     event.preventDefault();
@@ -93,7 +91,7 @@ $(document).ready(function() {
     searchSetlistFM(artistName);
   });
 
-  // search setlistFM for artist mbid
+  // Second AJAX request to SetlistFM to search by artist.mbidand return setlist
   function searchMBID(mbid) {
     // CORS-anywhere hack - we're doing this instead of creating a server
     var originalURL =
@@ -113,7 +111,7 @@ $(document).ready(function() {
     }).done(function(response) {
       artistSetlists = response.setlist;
       console.log(artistSetlists);
-
+      // Got the artist, then looped over the setlists and store arrays with the songs
       artistSetlists.map(function(val, i) {
         // now we are in the loop, and we are accessing setlists
 
@@ -129,14 +127,9 @@ $(document).ready(function() {
           })
         });
 
-        console.log(songs);
+        console.log(songs);       
 
-        // This is literally to display HTML, nothing more
-        result.map(function(song) {
-          $('#song-list').html(`<p>${song}</p>`);
-        });
-
-        // This is displaying the set lists on the page
+        // This is displaying the setlist info on the page
         var dateText = $("<p>").html(artistSetlists[i].eventDate);
         var citystateText = $("<p>").html(
           artistSetlists[i].venue.city.state +
@@ -150,7 +143,7 @@ $(document).ready(function() {
           }>View</button>`
         );
 
-
+        // ship arrays off depending on what the user clicked and created the playlist and then added the songs to that playlist
         var createPlaylistButton = $('<button/>', {
           text: 'Create Playlist',
           id: 'button-' + i,
@@ -182,13 +175,11 @@ $(document).ready(function() {
           'data-songs': songs[i]
         });
 
-
+        // appends setlist info on page
         $("#setlist-results").append(dateText, citystateText, button, createPlaylistButton);
       });
 
-
-      // $("#setlist-results").append(button)
-
+      // Click on View button below setlist - opens tab with setlistFM link of setlist
       $(document).on("click", "#view-button", function(event) {
         event.preventDefault();
         var link = $(this).attr("data-url");
@@ -199,7 +190,9 @@ $(document).ready(function() {
     });
   }
 
+  // First AJAX request to SetlistFM with artist name and return artist.mbid
   function searchSetlistFM(artistName) {
+  // CORS-anywhere hack - we're doing this instead of creating a server
     var originalURL =
       "https://api.setlist.fm/rest/1.0/search/artists?artistName=" +
       artistName +
