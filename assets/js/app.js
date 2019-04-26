@@ -178,7 +178,7 @@ $(document).ready(function() {
                 contentType: "application/json",
                 success: function(result) {
                   console.log(result);
-                  spotifyTracksArray.push(result.uri)
+                  spotifyTracksArray.push(result.tracks.items[0].uri)
                   console.log(spotifyTracksArray);
                   // now we need to push uri into spotifySongsUrls
                 },
