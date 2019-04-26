@@ -50,10 +50,16 @@ header {
 }
 
 
+#carousel{
+left: 20%;
+width: 60%;
+height: auto;
+}
 
-
-.d-block {
-    width: 570px;
+.pics {
+    padding-left: 30%;
+    padding-right: 5%;
+    width: 690px;
     height: 240px;
 }
 
