@@ -158,13 +158,14 @@ $(document).ready(function() {
           }>View</button>`
         );
 
-        var spotifyTracksArray = [];
 
         var createPlaylistButton = $('<button/>', {
           text: 'Create Playlist',
           id: 'button-' + i,
           click: function() { 
             var b;
+            var spotifyTracksArray = [];
+
             // for each song name get spotifySongUrl
             for (b = 0; b < songs[i].length; ++b) {
               $.ajax({
