@@ -158,7 +158,7 @@ $(document).ready(function() {
           }>View</button>`
         );
 
-        var spotifySongsUrls = [];
+        var spotifyTracksArray = [];
 
         var createPlaylistButton = $('<button/>', {
           text: 'Create Playlist',
