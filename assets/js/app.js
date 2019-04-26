@@ -177,6 +177,8 @@ $(document).ready(function() {
                 contentType: "application/json",
                 success: function(result) {
                   console.log(result);
+                  spotifyTracksArray.push(result.uri)
+                  console.log(spotifyTracksArray);
                   // now we need to push uri into spotifySongsUrls
                 },
                 error: function(error) {
@@ -184,6 +186,7 @@ $(document).ready(function() {
                   console.log("Error");
                 }
               });
+
             }
             // makePlaylist(access_token, user, spotifyTracksArray)
             // console.log('these are the songs i need to search for: ' + $(this).attr('data-songs'))
