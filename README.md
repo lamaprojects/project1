@@ -4,7 +4,7 @@ What the project does ?
 
 This project will allower users to:
 1. Log into Spotify
-2. Search for aritist through SetlistFM.com by using an AJAX request and allow users to view artists playlists.
+2. Search for aritist through SetlistFM.com and request a playlist that generates all songs from the setlist chosen.
 3. Create a playlist with songs from the sets found in SetlistFM on Spotify.
 
 
