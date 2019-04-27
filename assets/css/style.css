@@ -49,13 +49,19 @@ header {
   left: 40%;
 }
 
+#carousel{
+  left: 20%;
+  width: 60%;
+  height: auto;
+  }
+  
+  .pics {
+      padding-left: 30%;
+      padding-right: 5%;
+      width: 690px;
+      height: 240px;
+  }
 
-
-
-.d-block {
-    width: 570px;
-    height: 240px;
-}
 
 #login {
   border: 1px solid black;
