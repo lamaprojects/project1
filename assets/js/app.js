@@ -1,4 +1,4 @@
-//HTML loading before JS
+3//HTML loading before JS
 $(document).ready(function() {
   console.log("ready!");
 
