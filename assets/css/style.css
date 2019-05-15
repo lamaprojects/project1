@@ -24,14 +24,26 @@
   } */
 
 body {
-    background-color: black;
+    background-image: url("../images/hands.jpeg");    
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: 'Permanent Marker';
     color: white;
 }
 
 header {
-  border: 3px solid black;
-  background-color:black;
+  
+  background-image: url("../images/bg.jpeg");    
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   font-size: 40px;
   color: red;
   text-align: center;
@@ -42,7 +54,6 @@ header {
 
 
 .container {
-  border: 3px solid black;
   margin: 95px auto;
   height: auto;
   width: auto;
@@ -65,9 +76,9 @@ header {
 
 
 #login {
-  border: 1px solid black;
-  background-color:black;
-  color: white;
+  border: 3px solid purple;
+  background-color:whitesmoke;
+  color: purple;
   text-align: center;
   font-size: 25px;
   height: auto;
@@ -75,7 +86,7 @@ header {
 }
 
 #login:hover {
-  color: red;
+  color: black;
 }
 
 
@@ -87,7 +98,7 @@ line-height: 3em;
 margin: 15px auto;
 overflow: scroll;
 padding:10px;
-background-color: rgba(0, 0, 0, 0.692);
+background-color: whitesmoke(0, 0, 0, 0.692);
 color: white;
 scrollbar-base-color: rgb(252, 52, 52);
 }
@@ -114,8 +125,8 @@ font-size: 35px;
 
  .wrapper {
   margin: 40px auto;
-  background-color: rgba(43, 37, 37, 0.829);
-  border: 2px solid hsl(357, 100%, 52%);
+  background-color: whitesmoke(43, 37, 37, 0.829);
+  border: 2px solid orange(357, 100%, 52%);
   height: 200px;
   width: 50%;
   text-align: center;
