@@ -116,7 +116,7 @@ font-size: 35px;
      margin: 10px auto;
      font-size: 35px;
      color: red;
-     background-color: rgba(0, 0, 0, 0.589);
+     background-color:orange;
      border: none;
  }
 
@@ -125,7 +125,7 @@ font-size: 35px;
 
  .wrapper {
   margin: 40px auto;
-  background-color: whitesmoke(43, 37, 37, 0.829);
+  background-color: whitesmoke;
   border: 2px solid orange(357, 100%, 52%);
   height: 200px;
   width: 50%;
@@ -133,7 +133,7 @@ font-size: 35px;
 }
 
 .btn {
-    background-color: rgba(0, 0, 0, 0.356);
+    background-color: black(0, 0, 0, 0.356);
     position: relative;
     bottom: -80px;
     size:20%;
