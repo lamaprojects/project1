@@ -1,20 +1,29 @@
-# project1
+# reLive |  hw 10
+A Setlist playist generator
 
-What the project does ?
-
-This project will allower users to:
+ ### Why use reLive? ###
+ Use reLive to get 
+ * Concert/Setlist information transformed into Setlist Spotify playlists! 
+ 
 1. Log into Spotify
 2. Search for aritist through SetlistFM.com by using an AJAX request and allow users to view artists playlists.
 3. Create a playlist with songs from the sets found in SetlistFM on Spotify.
 
+ ### How to get started? ###
+* Users can start Re-Living festival sets by simply clicking on the Log in to Spotify button.
 
-Why the project is useful ? 
-This project is useful to users who want a playlist made from there favorite Sets from Festivals such as Coachella.
 
 
-How users can get started with the project ? 
 
-Users can start Re-Living festival sets by simply clicking on the Log in to Spotify button.
+
+
+
+
+
+
+![readMe1](https://user-images.githubusercontent.com/47580937/57794147-a0a32180-7708-11e9-871b-aa269922121b.jpeg)
+
+
 
 
 Who maintains and contributes to the project ? 
