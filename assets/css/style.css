@@ -126,6 +126,12 @@ color: black;
 scrollbar-base-color: rgb(252, 52, 52);
 }
 
+#setlist-results {
+  color: black;
+  font-family: 'Source Code Pro', monospace;
+
+}
+
 /* THIS IS FOR THE SEARCH FIELD */ 
 #form {
  margin: 0px auto;
