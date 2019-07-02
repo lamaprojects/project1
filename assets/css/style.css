@@ -115,7 +115,7 @@ body {
 
 #style {
 font-size: 20px;
-width:70%;
+width:75%;
 height:650px;
 line-height: 3em;
 margin: 15px auto;
@@ -123,12 +123,12 @@ overflow: scroll;
 padding:10px;
 background-color: whitesmoke(0, 0, 0, 0.692);
 color: black;
-scrollbar-base-color: rgb(252, 52, 52);
 }
 
 #setlist-results {
   color: black;
   font-family: 'Source Code Pro', monospace;
+  text-align: center;
 
 }
 
@@ -159,11 +159,8 @@ width: 50%;
 
  /* WHERE PLAYLIST WILL BE DISPLAYED */
 
- .wrapper {
-  margin: 40px auto;
+ /* .wrapper {
   background-color: whitesmoke(43, 37, 37, 0.829);
-  border: 2px solid orange(357, 100%, 52%);
-  height: 200px;
   width: 50%;
   text-align: center;
   color: black;
@@ -190,7 +187,7 @@ width: 50%;
   #setlist-results {
     text-align: center;
   }
-
+ */
 
   // Extra small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
