@@ -160,7 +160,9 @@ width: 50%;
   height: 200px;
   width: 50%;
   text-align: center;
+  color: black;
 }
+
 
 .btn {
     background-color: rgba(0, 0, 0, 0.356);
