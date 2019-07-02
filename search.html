@@ -2,15 +2,16 @@
   <!DOCTYPE html>
   <html>
     <head>
-        <title> reLIVE | Replay & Relive</title>
+        <title>reLIVE</title>
 
       <!--Let browser know website is optimized for mobile-->
 
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      
+      <link rel='icon' href='assets/images/_ionicons_svg_md-arrow-dropright-circle.jpg' type='image/x-icon' >
+
       <!-- FONT, CSS, & BOOTSTRAP -->
-      <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       <link rel="stylesheet" href="assets/css/reset.css">      
       <link rel="stylesheet" href="assets/css/style.css">
@@ -21,22 +22,19 @@
 
     <body>
 
-      <header>
-        <h1>reLIVE |  <ion-icon name="arrow-dropright-circle"></ion-icon> </h1>
-        <h3> Replay the music. Relive the moment.</h3>
-      </header>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container-fluid">
+              <h1 class="display-4">reLIVE <ion-icon name="arrow-dropright-circle"></ion-icon></h1>
+              <p class="lead">REPLAY THE MUSIC * RELIVE THE MOMENT</p>
+            </div>
+          </div>
 
 
-          <div class="row">
+          <div class="row justify-content-center">
               <div class="col-md-12">
                   <form id="form">
-                      <label for="user-input">
-
-                      </label>
-                          <br>
-                      <input type="text" id="user-input" placeholder="Search Artist..." name="search">
-                      <br>
-                      <input id="submitPress" type="submit" value="Submit" class="btn-default">
+                      <input class="form-control form-control-lg" type="text" id="user-input" placeholder="Search Artist" name="search">
+                      <input id="submitPress" type="submit" value="Submit" class="btn btn-primary btn-lg">
                   </form>
               </div>
           </div>

@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> reLIVE | Replay & Relive</title>
+    <title>reLIVE</title>
       <!--Let browser know website is optimized for mobile-->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel='icon' href='assets/images/_ionicons_svg_md-arrow-dropright-circle.jpg' type='image/x-icon' >
 
     <!-- FONT, CSS, & BOOTSTRAP -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Permanent+Marker"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -19,18 +18,24 @@
     />
     <link rel="stylesheet" href="assets/css/reset.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   </head>
 
   <body>
-
+<!-- 
     <header>
       <h1>reLIVE| <ion-icon name="arrow-dropright-circle"></ion-icon></h1>
       <h3>Replay the music. Relive the moment.</h3>
-    </header>
+    </header> -->
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 class="display-4">reLIVE <ion-icon name="arrow-dropright-circle"></ion-icon></h1>
+        <p class="lead">REPLAY THE MUSIC * RELIVE THE MOMENT</p>
+      </div>
+    </div>
 
     <!-- THIS IS WHERE THE CAROUSEL OF FESTIVAL PICS WILL BE CREATED -->
-    <div id="carousel" class="carousel slide" data-ride="carousel">
+    <!-- <div id="carousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carousel" data-slide-to="0" class="active"></li>
         <li data-target="#carousel" data-slide-to="1"></li>
@@ -63,11 +68,15 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
-    </div>
+    </div> -->
 
       <!-- Log in button for Spotify -->
       <div class="container">
-        <button id="login" class="w3-button w3-round-xlarge w3-hover-green" >Log in using Spotify</button>
+          <div class="row justify-content-center">
+              <!-- <div class="col text-center"> -->
+        <button id="login" type="button" class="btn btn-primary btn-lg btn-block" >LOGIN IN WITH SPOTIFY</button>
+          <!-- </div> -->
+        </div>
       </div>
 
  
