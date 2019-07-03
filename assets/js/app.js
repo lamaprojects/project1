@@ -46,6 +46,7 @@ $(document).ready(function() {
       public: false
     };
 
+  // USING POST METHOD TO SEND PLAYLIST DATA TO SERVER TO CREATE NEW PLAYLIST IN USERS SPOTIFY ACCOUNT  
     $.ajax({
       type: "POST",
       url: urlString,
@@ -69,7 +70,7 @@ $(document).ready(function() {
             Authorization: "Bearer " + access_token
           },
           successs: function(result) {
-            console.log("songs were added holy shit!!!")
+            console.log("songs were added!")
           },
           error: function(error) {
             console.log(error);
@@ -84,7 +85,8 @@ $(document).ready(function() {
     }); // this closes first ajax call to create playlist
   }
 
-
+ // THE ONLCIK METHOD WILL TARGET THE SUBMIT BUTTON IN search.html 
+ // 
   $("#submitPress").on("click", function(event) {
     event.preventDefault();
     var artistName = $("#user-input").val();
