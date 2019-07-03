@@ -87,8 +87,8 @@ $(document).ready(function() {
 
  // THE ONLCLICK METHOD WILL TARGET THE SUBMIT BUTTON IN search.html 
   
-  //$("#submitPress").on("click", function(event) {
-    $("#form").find('#submitPress').on("click", function(event) {
+  // $("#submitPress").on("click", function(event) {
+    $(document).on('click', '#submitPress', function() {
     event.preventDefault();
     var artistName = $("#user-input").val();
     searchSetlistFM(artistName);
