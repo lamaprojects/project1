@@ -87,7 +87,7 @@ $(document).ready(function() {
 
  // THE ONLCIK METHOD WILL TARGET THE SUBMIT BUTTON IN search.html 
  // 
-  $(document).on("click touchstart", "#submitPress", function(event) {
+  $("#submitPress").on("mousedown touchstart", function(event) {
     event.preventDefault();
     var artistName = $("#user-input").val();
     searchSetlistFM(artistName);
