@@ -87,8 +87,15 @@ $(document).ready(function() {
 
  // THE ONLCIK METHOD WILL TARGET THE SUBMIT BUTTON IN search.html 
  // 
-  $("#submitPress").on("mousedown touchstart", function(event) {
-    event.preventDefault();
+ $("#submitPress").on("click", function(event) {
+  event.preventDefault();
+  var artistName = $("#user-input").val();
+  searchSetlistFM(artistName);
+});
+
+
+
+  event.preventDefault();
     var artistName = $("#user-input").val();
     searchSetlistFM(artistName);
   });
