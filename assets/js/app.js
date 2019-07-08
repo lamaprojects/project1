@@ -86,7 +86,7 @@ $(document).ready(function() {
   }
 
   
-   $("form").submit(function(event) {
+   $("#submitPress").on("click", function(event) {
       event.preventDefault();
     var artistName = $("#user-input").val();
     searchSetlistFM(artistName);
