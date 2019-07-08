@@ -86,8 +86,8 @@ $(document).ready(function() {
   }
 
   
-   $("#submitPress").on("click", function(event) {
-      event.preventDefault();
+   $("#submitPress").on("click touchstart", function(event) {
+      // event.preventDefault();
     var artistName = $("#user-input").val();
     searchSetlistFM(artistName);
   });
