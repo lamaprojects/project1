@@ -95,12 +95,11 @@ $(document).ready(function() {
   // Second AJAX request to SetlistFM to search by artist.mbidand return setlist
   function searchMBID(mbid) {
     // CORS-anywhere hack - we're doing this instead of creating a server
-  //  var originalURL =
-    //  "https://api.setlist.fm/rest/1.0/search/setlists?artistMbid=" +
-      //mbid.replace(/\"/g, "") +
-      //"&p=1";
-    //var queryURL = "https://cors-anywhere.herokuapp.com/" + originalURL;
-    var queryURL = "api/artist";
+  var originalURL =
+     "https://api.setlist.fm/rest/1.0/search/setlists?artistMbid=" +
+      mbid.replace(/\"/g, "") +
+      "&p=1";
+    var queryURL = "https://cors-anywhere.herokuapp.com/" + originalURL;
     $.ajax({
       url: queryURL,
       method: "GET",
