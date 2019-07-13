@@ -194,7 +194,7 @@ $(document).ready(function() {
     //   "https://api.setlist.fm/rest/1.0/search/artists?artistName=" +
     //   artistName +
     //   "&p=1&sort=relevance";
-    var queryURL = "http://localhost:3001/api/artist/" + artistName;
+    var queryURL = "api/artist/" + artistName;
 
     $.ajax({
       url: queryURL,
