@@ -100,16 +100,11 @@ $(document).ready(function() {
       //mbid.replace(/\"/g, "") +
       //"&p=1";
     //var queryURL = "https://cors-anywhere.herokuapp.com/" + originalURL;
-    var queryURL = "api/artist";
+    var queryURL = "api/mbid/" + mbid;
     $.ajax({
       url: queryURL,
       method: "GET",
       dataType: "json",
-      // this headers section is necessary for CORS-anywhere
-      headers: {
-        "x-requested-with": "xhr",
-        "x-api-key": "6d1b43e2-d601-4dee-91e1-9889e57516f7"
-      }
     }).done(function(response) {
       artistSetlists = response.setlist;
       console.log(artistSetlists);
@@ -195,11 +190,11 @@ $(document).ready(function() {
   // First AJAX request to SetlistFM with artist name and return artist.mbid
   function searchSetlistFM(artistName) {
   // CORS-anywhere hack - we're doing this instead of creating a server
-    var originalURL =
-      "https://api.setlist.fm/rest/1.0/search/artists?artistName=" +
-      artistName +
-      "&p=1&sort=relevance";
-    var queryURL = "https://cors-anywhere.herokuapp.com/" + originalURL;
+    // var originalURL =
+    //   "https://api.setlist.fm/rest/1.0/search/artists?artistName=" +
+    //   artistName +
+    //   "&p=1&sort=relevance";
+    var queryURL = "http://localhost:3001/api/artist/" + artistName;
 
     $.ajax({
       url: queryURL,
@@ -211,7 +206,8 @@ $(document).ready(function() {
         "x-api-key": "6d1b43e2-d601-4dee-91e1-9889e57516f7"
       }
     }).done(function(response) {
-      var artistMBID = JSON.stringify(response.artist[0].mbid);
+      console.log(response)
+      var artistMBID =response.mbid;
 
       // This function does the setlist lookup and performs HTML front-end stuff
       searchMBID(artistMBID);
